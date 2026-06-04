@@ -1,0 +1,108 @@
+[
+  {
+    "Component": "Navbar",
+    "props": {
+      "brand": "ApexGlobal Bank",
+      "logoUrl": "/assets/logo.svg",
+      "showProgress": true,
+      "currentStep": 1,
+      "totalSteps": 4,
+      "stepTitle": "Identity Verification"
+    }
+  },
+  {
+    "Component": "HeroSection",
+    "props": {
+      "title": "Welcome to ApexGlobal",
+      "subtitle": "Let's get your premium checking account set up in less than 5 minutes.",
+      "badgeText": "Step 1 of 4: Basic Information",
+      "alignment": "center"
+    }
+  },
+  {
+    "Component": "FormSection",
+    "props": {
+      "formId": "customer_onboarding_basic",
+      "submitUrl": "/api/v1/onboarding/identity",
+      "method": "POST",
+      "fields": [
+        {
+          "id": "firstName",
+          "type": "text",
+          "label": "Legal First Name",
+          "placeholder": "John",
+          "required": true,
+          "validation": {
+            "minLength": 2,
+            "errorMessage": "First name must be at least 2 characters."
+          }
+        },
+        {
+          "id": "lastName",
+          "type": "text",
+          "label": "Legal Last Name",
+          "placeholder": "Doe",
+          "required": true,
+          "validation": {
+            "minLength": 2,
+            "errorMessage": "Last name must be at least 2 characters."
+          }
+        },
+        {
+          "id": "emailAddress",
+          "type": "email",
+          "label": "Email Address",
+          "placeholder": "john.doe@example.com",
+          "required": true,
+          "validation": {
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "errorMessage": "Please enter a valid email address."
+          }
+        },
+        {
+          "id": "accountType",
+          "type": "select",
+          "label": "Desired Account Type",
+          "required": true,
+          "options": [
+            { "label": "Premium Checking (0% Fees)", "value": "premium_checking" },
+            { "label": "High-Yield Savings (4.5% APR)", "value": "high_yield_savings" },
+            { "label": "Joint Checking Account", "value": "joint_checking" }
+          ],
+          "defaultValue": "premium_checking"
+        },
+        {
+          "id": "termsAgreement",
+          "type": "checkbox",
+          "label": "I consent to the electronic disclosure agreement and standard KYC identity verification guidelines.",
+          "required": true,
+          "validation": {
+            "mustBeTrue": true,
+            "errorMessage": "You must accept the terms to proceed."
+          }
+        }
+      ],
+      "actions": {
+        "primaryButton": {
+          "text": "Continue to ID Upload",
+          "actionType": "submit",
+          "variant": "primary"
+        },
+        "secondaryButton": {
+          "text": "Save Draft & Exit",
+          "actionType": "save_draft",
+          "variant": "outline"
+        }
+      }
+    }
+  },
+  {
+    "Component": "SupportWidget",
+    "props": {
+      "type": "sticky-bottom-right",
+      "label": "Need help opening your account?",
+      "enableLiveChat": true,
+      "phoneNumber": "1-800-555-APEX"
+    }
+  }
+]
