@@ -1,0 +1,6 @@
+@Service.WireframeAI_HostAddress = http://localhost:5182
+
+GET {{Service.WireframeAI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
